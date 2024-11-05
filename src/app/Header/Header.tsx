@@ -7,7 +7,7 @@ import Badge from "@/Components/Badge/Badge";
 import { Button } from "@/Components/Button/Button";
 export default function Header() {
   return (
-    <header className="w-full sticky top-0 pt-4">
+    <header className="w-full sticky top-0 ">
       <div className="py-4 w-full bg-default shadow-md rounded-xl max-w-screen-2xl mx-auto px-3">
         <div className="w-full flex items-center justify-between ">
           <MainLogo href="/" alt="store-logo" />
@@ -21,7 +21,6 @@ export default function Header() {
             ))}
           </ul>
           <div className="flex items-center gap-x-2">
-            <Button className="text-primary" variant={"border"} colors={'primary'} radius={"full"}>Login</Button>
             <Badge content={1}>
               {/* <button className="size-10 rounded-full bg-main flex items-center justify-center text-primary"></button> */}
               <Button radius={"full"} isIconOnly colors={"primary"}>

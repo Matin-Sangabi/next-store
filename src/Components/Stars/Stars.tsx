@@ -10,9 +10,9 @@ export default function Stars({ category, rate }: StarsProps) {
   return (
     <div className="flex items-center justify-between w-full">
       {Boolean(category) && (
-        <span className="text-xs text-secondary font-semibold">{category}</span>
+        <span className="text-[10px] lg:text-xs text-secondary font-semibold">{category}</span>
       )}
-      <span className="flex font-bold text-secondary items-center  text-xs">
+      <span className="flex font-bold text-secondary items-center  text-[10px] lg:text-xs">
         {rate}
         <Icon
           icon={"solar:star-bold"}

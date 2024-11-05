@@ -1,31 +1,10 @@
-import ProductsCard from "@/Components/Carts/Products";
-import { ProductsDataTypes } from "@/types";
+import { Button } from '@/Components/Button/Button'
+import React from 'react'
 
-async function getProducts(limit: string | string[] | undefined) {
-  // ssr request
-  const data = await fetch(`https://fakestoreapi.com/products?limit=${limit}`, {
-    cache: "no-store",
-  });
-  return data.json();
-}
-
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) {
-  const { limit } = await searchParams;
-
-  const products: ProductsDataTypes[] = await getProducts(limit || "10");
-
+export default function Page() {
   return (
-    <div className="w-full flex flex-col gap-y-4 my-10">
-      <h1 className="text-2xl font-bold">Products Lists</h1>
-      <div className="w-full grid grid-cols-5 gap-x-6 gap-y-6">
-        {products.map((item) => (
-          <ProductsCard key={item.id} {...item} />
-        ))}
-      </div>
+    <div className='w-full flex items-center justify-center h-full min-h-[80vh]'>
+      <Button href='/products'>Go To Shop</Button>
     </div>
-  );
+  )
 }
