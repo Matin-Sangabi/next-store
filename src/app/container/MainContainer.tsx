@@ -3,9 +3,9 @@ import Header from "../Header/Header";
 
 export default function MainContainer({ children }: { children: ReactNode }) {
   return (
-    <div className="w-full min-h-screen bg-main">
+    <div className="w-full min-h-screen bg-main px-3">
       <Header />
-      <main>{children}</main>
+      <main className="max-w-screen-2xl mx-auto px-4">{children}</main>
     </div>
   );
 }

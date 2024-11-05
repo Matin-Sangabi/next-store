@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/utils/cn";
 import { cva, VariantProps } from "class-variance-authority";
 import Link from "next/link";
@@ -9,24 +11,25 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        border: "bg-transparent border ",
+        border: "bg-transparent border  ",
         ghost: "backdrop-blur-sm",
         default: "",
       },
       colors: {
-        default: "bg-default text-primary border-default",
-        primary: "bg-primary text-main border-primary",
-        secondary: "bg-secondary text-white border-secondary",
-        danger: "bg-red-600 text-white border-red-600",
-        success: "bg-green-600 text-white border-green-600",
+        default: "bg-default text-primary font-semibold border-default ring-default/80",
+        primary: "bg-primary text-main font-semibold border-primary ring-primary/40",
+        secondary: "bg-secondary text-white font-semibold border-secondary ring-secondary",
+        danger: "bg-red-600 text-white font-semibold border-red-600 ring-red-600",
+        success: "bg-green-600 text-white font-semibold border-green-600 ring-green-600",
       },
       size: {
         default: "py-2 px-2 h-10",
-        sm: "p-2 h-9",
+        sm: "p-2 h-7 text-xs",
         lg: "h-12 px-8 py-3",
         md: "h-11 px-6 py-2",
       },
       radius: {
+        default : "rounded-[4px]",
         sm: "rounded-md",
         lg: "rounded-xl",
         md: "rounded-lg",
@@ -36,6 +39,10 @@ const buttonVariants = cva(
         true: "w-full ",
         false: "",
       },
+      isIconOnly: {
+        true: "w-12 h-12 min-w-12 rounded-full !text-main",
+        false: "",
+      },
     },
     defaultVariants: {
       colors: "default",
@@ -43,6 +50,7 @@ const buttonVariants = cva(
       variant: "default",
       radius: "md",
       fullWidth: false,
+      isIconOnly: false,
     },
   }
 );
@@ -53,6 +61,7 @@ export interface ButtonProps
   href?: string;
   fullWidth?: boolean;
   children: ReactNode;
+  isIconOnly?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -65,6 +74,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       size,
       fullWidth = false,
       radius,
+      isIconOnly,
       colors,
       ...props
     },
@@ -78,6 +88,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             buttonVariants({
               variant,
               colors,
+              isIconOnly,
               size,
               radius,
               className,
@@ -91,13 +102,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     }
     return (
       <motion.button
-        whileTap={{ scale: "0.95" }}
+        whileTap={{ scale: "0.9" ,  }}
+        
         className={cn(
           buttonVariants({
             variant,
             colors,
             size,
             radius,
+            isIconOnly,
             className,
             fullWidth,
           })

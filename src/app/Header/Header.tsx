@@ -21,13 +21,11 @@ export default function Header() {
             ))}
           </ul>
           <div className="flex items-center gap-x-2">
-            <button className="border py-2 border-primary rounded-full px-6 font-semibold">
-              login
-            </button>
+            <Button className="text-primary" variant={"border"} colors={'primary'} radius={"full"}>Login</Button>
             <Badge content={1}>
               {/* <button className="size-10 rounded-full bg-main flex items-center justify-center text-primary"></button> */}
-              <Button colors={"primary"}>
-                <Icon icon={"solar:cart-large-4-bold-duotone"} width={24} />
+              <Button radius={"full"} isIconOnly colors={"primary"}>
+                <Icon icon={"solar:cart-large-4-bold-duotone"} width={28} />
               </Button>
             </Badge>
           </div>
