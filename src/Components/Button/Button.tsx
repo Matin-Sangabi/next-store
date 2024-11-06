@@ -30,8 +30,8 @@ const buttonVariants = cva(
       },
       size: {
         default: "py-2 px-2 h-10",
-        sm: "p-1 h-7 !min-w-7 w-7 text-xs",
-        lg: "h-12 px-8 py-3",
+        sm: "p-1 h-7  w-7 text-xs",
+        lg: "h-14 !min-w-14 px-8 py-3 text-xl",
         md: "h-11 px-6 py-2",
       },
       radius: {
@@ -46,7 +46,7 @@ const buttonVariants = cva(
         false: "",
       },
       isIconOnly: {
-        true: "w-12 h-12 !min-w-12 rounded-full !text-main",
+        true: "w-8 h-8 !min-w-8 rounded-full !px-0 !text-main",
         false: "",
       },
     },

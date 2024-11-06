@@ -1,3 +1,5 @@
+
+type Size = "sm" | "md" | "lg" | "default"
 export interface ProductsDataTypes {
   id: number;
   title: string;
@@ -10,4 +12,5 @@ export interface ProductsDataTypes {
     count: 470;
   };
   quantity?: number;
+  size?: Size;
 }
