@@ -14,6 +14,7 @@ const buttonVariants = cva(
         border: "bg-transparent border  ",
         ghost: "backdrop-blur-sm",
         default: "",
+        light : "bg-opacity-0 hover:bg-opacity-30 "
       },
       colors: {
         default:
@@ -29,7 +30,7 @@ const buttonVariants = cva(
       },
       size: {
         default: "py-2 px-2 h-10",
-        sm: "p-2 h-7 text-xs",
+        sm: "p-1 h-7 !min-w-7 w-7 text-xs",
         lg: "h-12 px-8 py-3",
         md: "h-11 px-6 py-2",
       },
@@ -45,7 +46,7 @@ const buttonVariants = cva(
         false: "",
       },
       isIconOnly: {
-        true: "w-12 h-12 min-w-12 rounded-full !text-main",
+        true: "w-12 h-12 !min-w-12 rounded-full !text-main",
         false: "",
       },
     },

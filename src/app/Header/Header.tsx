@@ -1,10 +1,9 @@
 import MainLogo from "@/Components/Logo/MainLogo";
 import React from "react";
-import { Icon } from "@iconify/react";
 import { navigation } from "@/static/data";
 import Link from "next/link";
-import Badge from "@/Components/Badge/Badge";
-import { Button } from "@/Components/Button/Button";
+
+import CartBtn from "./Cartbtn";
 export default function Header() {
   return (
     <header className="w-full sticky top-0 ">
@@ -21,12 +20,7 @@ export default function Header() {
             ))}
           </ul>
           <div className="flex items-center gap-x-2">
-            <Badge content={1}>
-              {/* <button className="size-10 rounded-full bg-main flex items-center justify-center text-primary"></button> */}
-              <Button radius={"full"} isIconOnly colors={"primary"}>
-                <Icon icon={"solar:cart-large-4-bold-duotone"} width={28} />
-              </Button>
-            </Badge>
+            <CartBtn />
           </div>
         </div>
       </div>

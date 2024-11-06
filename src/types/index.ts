@@ -9,4 +9,5 @@ export interface ProductsDataTypes {
     rate: number;
     count: 470;
   };
+  quantity?: number;
 }
