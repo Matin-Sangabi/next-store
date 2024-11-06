@@ -23,7 +23,7 @@ export default function CartTotal({ carts }: { carts: ProductsDataTypes[] }) {
   }, [carts]);
 
   return (
-    <div className="w-full max-w-xs p-2 bg-white rounded-xl shadow-sm flex flex-col gap-y-4">
+    <div className="w-full  lg:max-w-xs p-2 bg-white rounded-xl shadow-sm flex flex-col gap-y-4">
       <div className="flex w-full items-center justify-between">
         <div className="flex w-full items-center justify-between">
           <div className=" text-primary/70 font-semibold">Total Price : </div>
