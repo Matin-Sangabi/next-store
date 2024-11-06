@@ -1,10 +1,9 @@
 import Stars from "@/Components/Stars/Stars";
 import { ProductsDataTypes } from "@/types";
-import Image from "next/image";
 import React from "react";
 import ProductsActionBtn from "../productsActionBtn";
 import ProductImage from "@/Components/Image/ProductImage";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 
 async function getProductsById(id: string) {
   // ssr request
@@ -20,7 +19,6 @@ type Props = {
 
 export async function generateMetadata(
   { params }: Props,
-  parent: ResolvingMetadata
 ): Promise<Metadata> {
   const id = (await params).id;
 

@@ -8,12 +8,16 @@ import React from "react";
 export default function CartBtn() {
   const { carts } = useCart();
 
-    console.log(carts)
-
   return (
     <Badge content={carts.length}>
       {/* <button className="size-10 rounded-full bg-main flex items-center justify-center text-primary"></button> */}
-      <Button href="/cart" size={"lg"} radius={"full"} isIconOnly colors={"primary"}>
+      <Button
+        href="/cart"
+        size={"lg"}
+        radius={"full"}
+        isIconOnly
+        colors={"primary"}
+      >
         <Icon icon={"solar:cart-large-4-bold-duotone"} width={28} />
       </Button>
     </Badge>

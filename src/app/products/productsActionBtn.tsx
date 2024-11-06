@@ -5,7 +5,6 @@ import { useCart } from "@/hook/useCart";
 import { useCartAction } from "@/hook/useCartDispatch";
 import { ProductsDataTypes } from "@/types";
 import { formatNumber } from "@/utils/formatter";
-import { Icon } from "@iconify/react/dist/iconify.js";
 import React, { useMemo } from "react";
 import ProductsInCartAction from "./productsInCartAction";
 
@@ -35,13 +34,7 @@ export default function ProductsActionBtn({
     dispatch({ type: "ADD_TO_CART", payload: item });
   };
 
-  const decrementCartHandler = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    id: number
-  ) => {
-    e.preventDefault();
-    dispatch({ type: "DECREMENT", payload: { id } });
-  };
+
 
   return (
     <>
