@@ -15,9 +15,15 @@ export default function AddMore() {
         className="min-w-[150px]"
         colors="primary"
         onClick={() => {
-          push(`/products?limit=${limit && +limit === 10 ? "20" : "10"}`, {
-            scroll: false,
-          });
+          if (limit) {
+            push(`/products?limit=${limit && +limit === 10 ? "20" : "10"}`, {
+              scroll: false,
+            });
+          } else {
+            push(`/products?limit=20`, {
+              scroll: false,
+            });
+          }
         }}
       >
         {limit && +limit === 20 ? "Add Less" : "Add More"}
