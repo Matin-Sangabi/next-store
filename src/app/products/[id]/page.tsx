@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import ProductsActionBtn from "../productsActionBtn";
 import ProductImage from "@/Components/Image/ProductImage";
+import { Metadata, ResolvingMetadata } from "next";
 
 async function getProductsById(id: string) {
   // ssr request
@@ -11,6 +12,23 @@ async function getProductsById(id: string) {
     cache: "no-store",
   });
   return data.json();
+}
+
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const id = (await params).id;
+
+  const product = await getProductsById(id);
+
+  return {
+    title: product.title,
+  };
 }
 
 export default async function Page({

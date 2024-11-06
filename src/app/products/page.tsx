@@ -1,6 +1,7 @@
 import ProductsCard from "@/Components/Carts/Products";
 import { ProductsDataTypes } from "@/types";
 import AddMore from "./AddMore";
+import { Metadata } from "next";
 
 async function getProducts(limit: string | string[] | undefined) {
   // ssr request
@@ -10,6 +11,13 @@ async function getProducts(limit: string | string[] | undefined) {
   return data.json();
 }
 
+
+  export const metadata: Metadata = {
+    title: "Clothes Store | Products",
+    description: "Products List of  Clothes Store ",
+  };
+
+
 export default async function Page({
   searchParams,
 }: {
@@ -18,6 +26,8 @@ export default async function Page({
   const { limit } = await searchParams;
 
   const products: ProductsDataTypes[] = await getProducts(limit || "10");
+
+
 
   return (
     <div className="w-full flex flex-col gap-y-4  my-4">

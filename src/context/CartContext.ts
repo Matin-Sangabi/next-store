@@ -8,7 +8,8 @@ export type CartState = {
 export type CartAction =
   | { type: "ADD_TO_CART"; payload: ProductsDataTypes }
   | { type: "REMOVE_FROM_CART"; payload: { id: number } }
-  | { type: "DECREMENT"; payload: { id: number } };
+  | { type: "DECREMENT"; payload: { id: number } }
+  | { type: "STORAGE"; payload: ProductsDataTypes[] };
 
 export const INITIAL_STATE: CartState = {
   carts: [],

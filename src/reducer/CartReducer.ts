@@ -49,6 +49,10 @@ export function cartReducer(state: CartState, action: CartAction): CartState {
       }
       return state;
     }
+    case "STORAGE": {
+      const carts = action.payload;
+      return { ...state, carts };
+    }
     default:
       return state;
   }
