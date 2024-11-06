@@ -3,9 +3,12 @@
 import { Button } from "@/Components/Button/Button";
 import { ProductsDataTypes } from "@/types";
 import { formatNumber } from "@/utils/formatter";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
+import PayModal from "./PayModal";
 
 export default function CartTotal({ carts }: { carts: ProductsDataTypes[] }) {
+  const [open, setOpen] = useState<string | number | null>(null);
+
   const calcTotalPrices = useMemo(() => {
     if (carts.length > 0) {
       const total = carts.reduce((acc, curr) => {
@@ -38,9 +41,14 @@ export default function CartTotal({ carts }: { carts: ProductsDataTypes[] }) {
         <div className=" text-primary/70 font-semibold">Payment : </div>
         <span className="font-bold text-lg">{calcTotalPrices} $</span>
       </div>
-      <Button colors={"primary"} fullWidth>
+      <Button
+        onClick={() => setOpen(calcTotalPrices)}
+        colors={"primary"}
+        fullWidth
+      >
         Pay
       </Button>
+      <PayModal open={open} onClose={() => setOpen(null)} />
     </div>
   );
 }
