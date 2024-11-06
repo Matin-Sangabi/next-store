@@ -7,6 +7,7 @@ import { ProductsDataTypes } from "@/types";
 import { formatNumber } from "@/utils/formatter";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import React, { useMemo } from "react";
+import ProductsInCartAction from "./productsInCartAction";
 
 export default function ProductsActionBtn({
   id,
@@ -20,17 +21,25 @@ export default function ProductsActionBtn({
   const { carts } = useCart();
 
   const inCart = useMemo(
-    () => carts.find((item) => item.id === id),
+    () => carts.some((item) => item.id === id),
     [carts, id]
   );
 
   const dispatch = useCartAction();
 
-  const addToCartHandler = (item: ProductsDataTypes) => {
+  const addToCartHandler = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    item: ProductsDataTypes
+  ) => {
+    e.preventDefault();
     dispatch({ type: "ADD_TO_CART", payload: item });
   };
 
-  const decrementCartHandler = (id: number) => {
+  const decrementCartHandler = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: number
+  ) => {
+    e.preventDefault();
     dispatch({ type: "DECREMENT", payload: { id } });
   };
 
@@ -38,53 +47,26 @@ export default function ProductsActionBtn({
     <>
       <div className="flex flex-col-reverse gap-y-1 lg:flex-row items-center justify-between w-full gap-x-2 lg:mt-2">
         {inCart ? (
-          <div className="flex items-center gap-x-1">
-            <Button
-              onClick={() =>
-                addToCartHandler({
-                  id,
-                  title,
-                  image,
-                  rating,
-                  category,
-                  price,
-                })
-              }
-              variant={"light"}
-              colors={"default"}
-              size={size}
-              isIconOnly
-              className="!text-primary"
-            >
-              <Icon icon={"mdi:add"} width={22} />
-            </Button>
-            <Button className="!text-primary" size={size} isIconOnly>
-              {inCart.quantity}
-            </Button>
-            <Button
-              size={size}
-              isIconOnly
-              onClick={() => decrementCartHandler(id)}
-              colors={
-                inCart?.quantity && inCart?.quantity > 1 ? "primary" : "danger"
-              }
-              variant={"light"}
-              className="!text-primary"
-            >
-              {inCart.quantity && inCart?.quantity > 1 ? (
-                <Icon icon={"ic:round-minus"} width={22} />
-              ) : (
-                <Icon
-                  icon={"solar:trash-bin-minimalistic-bold-duotone"}
-                  width={22}
-                />
-              )}
-            </Button>
-          </div>
+          <ProductsInCartAction
+            id={id}
+            category={category}
+            image={image}
+            price={price}
+            rating={rating}
+            title={title}
+            size={size}
+          />
         ) : (
           <Button
-            onClick={() =>
-              addToCartHandler({ id, title, image, rating, category, price })
+            onClick={(e) =>
+              addToCartHandler(e, {
+                id,
+                title,
+                image,
+                rating,
+                category,
+                price: +formatNumber(price),
+              })
             }
             radius={"default"}
             colors={"primary"}

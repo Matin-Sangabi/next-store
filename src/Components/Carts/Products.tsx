@@ -4,6 +4,8 @@ import { ProductsDataTypes } from "@/types";
 import Stars from "../Stars/Stars";
 
 import ProductsActionBtn from "@/app/products/productsActionBtn";
+import Link from "next/link";
+import ProductImage from "../Image/ProductImage";
 
 export default function ProductsCard({
   title,
@@ -14,18 +16,10 @@ export default function ProductsCard({
   id,
 }: ProductsDataTypes) {
   return (
-    <div className="rounded-lg bg-white shadow-sm w-full flex flex-col gap-y-4">
+    <Link href={`/products/${id}`} className="rounded-lg bg-white shadow-sm w-full flex flex-col gap-y-4">
       <div className="w-full aspect-square flex mx-auto   justify-center border-b min-h-[180px]  lg:max-h-[210px] ">
         <div className="w-[170px] h-[170px] lg:w-[200px] lg:h-[200px] leading-[0] pt-1 ">
-          <Image
-            src={image}
-            alt={title}
-            width={300}
-            height={300}
-            unoptimized
-            quality={100}
-            className="w-full h-full object-contain "
-          />
+          <ProductImage title={title} image={image} />
         </div>
       </div>
       <div className="flex flex-col gap-y-2 px-4 w-full pb-3">
@@ -42,6 +36,6 @@ export default function ProductsCard({
           title={title}
         />
       </div>
-    </div>
+    </Link>
   );
 }
